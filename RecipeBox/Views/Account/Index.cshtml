@@ -4,7 +4,11 @@
 
 <h2>User Authentication</h2>
 <hr />
-<p>@Html.ActionLink("Register", "Register")</p>
+<form action="Account/Login" method="get">
+<button type="submit" class="btn">Log In</button>
+</form>
+<br>
+<p>Not a member? Register @Html.ActionLink("here", "Register")</p>
 
 @if (User.Identity.IsAuthenticated)
 {

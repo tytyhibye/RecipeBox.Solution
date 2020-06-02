@@ -37,3 +37,4 @@ C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\bin\HPD\Debug\netcore
 C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\bin\HPD\Debug\netcoreapp2.2\RecipeBox.Views.pdb
 C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\RecipeBox.Views.pdb
 C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\RecipeBox.csproj.CopyComplete
+C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
