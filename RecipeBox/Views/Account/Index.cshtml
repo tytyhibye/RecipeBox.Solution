@@ -2,17 +2,26 @@
   Layout = "_Layout";
 }
 
+@using RecipeBox.Controllers
+
 <h2>User Authentication</h2>
 <hr />
-<form action="Account/Login" method="get">
-<button type="submit" class="btn">Log In</button>
-</form>
-<br>
-<p>Not a member? Register @Html.ActionLink("here", "Register")</p>
+@if (User.Identity.IsAuthenticated)
+{
+  
+}
+else
+{
+  <form action="Account/Login" method="get">
+  <button type="submit" class="btn">Log In</button>
+  </form>
+  <br>
+  <p>Not a member? Register @Html.ActionLink("here", "Register")</p>
+}
 
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Welcome @User.Identity.Name!</p>
+  <p>Currently logged in using email - @User.Identity.Name</p>
   <br>
   @using (Html.BeginForm("LogOff", "Account"))
   {
