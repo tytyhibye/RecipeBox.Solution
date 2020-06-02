@@ -4,8 +4,8 @@
 
 @model RecipeBox.Models.Recipe
 
-<h4>Add a new Recipe:</h4>
-
+<h3>Add a new Recipe:</h3>
+<hr />
 @using (Html.BeginForm())
 {
     @Html.LabelFor(model => model.Name)
@@ -17,8 +17,9 @@
     @Html.LabelFor(model => model.Instructions)
     @Html.TextBoxFor(model => model.Instructions, new { type ="list" })
     <br>
-    @Html.Label("Select Tag")
+    @Html.Label("Add Tag to recipe:")
     @Html.DropDownList("TagId")
-
-    <input type="submit" value="Add new Recipe" class="btn" />
+    <br>
+    <br>
+    <input type="submit" value="Create Recipe" class="btn" />
 }

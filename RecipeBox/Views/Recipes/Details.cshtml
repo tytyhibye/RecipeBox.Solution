@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Recipe
+
+<h2>Recipe Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): </h3><h4>@Html.DisplayFor(model => model.Name)<h3>
+<h3>@Html.DisplayNameFor(model => model.Ingredients): </h3><h4>@Html.DisplayFor(model => model.Ingredients)</h4>
+<h3>@Html.DisplayNameFor(model => model.Instructions): </h3><h4>@Html.DisplayFor(model => model.Instructions)</h4>
+@if(@Model.Tags.Count == 0)
+{
+  <p>This recipe doesn't contain any tags</p>
+}
+else
+{
+  <h3>Tags:</h3>
+  @foreach(var join in Model.Tags)
+  {
+    <p>@join.Tag.Name</p>
+    @using (Html.BeginForm("DeleteTag", "Recipes")) //("Recipes" == "RecipesContoller")
+    {
+      <p>@Html.Hidden("joinId", @join.RecipeTagId) | <input type="submit" value="Delete Tag" class="btn"/></p>
+      
+    }
+  }
+}
+<hr />
+<p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId }) |
+@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId }) |
+@Html.ActionLink("Add Tag", "AddTag", new { id = Model.RecipeId })</p> 

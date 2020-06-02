@@ -52,7 +52,7 @@ http://localhost:5000
 ```
 dotnet ef migrations add Initial
 ```
-(if you get the error "Unable to resolve projection" you are not in the project directory)
+
 7. Once this successfully employs, enter the following to update the data tables to correlate with the project models:
 ```
 dotnet ef database update
