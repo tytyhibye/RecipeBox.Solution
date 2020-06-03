@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
+
 namespace RecipeBox.Controllers
 {
   public class TagsController : Controller
@@ -33,7 +38,8 @@ namespace RecipeBox.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
+    
+    [Authorize]
     public ActionResult Details(int id)
     {
       var thisTag = _db.Tags
@@ -87,7 +93,7 @@ namespace RecipeBox.Controllers
          {
            matches.Add(tag);
          }
-       } 
+       }
       }
       return View(matches);
     }

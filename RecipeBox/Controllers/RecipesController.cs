@@ -5,6 +5,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+// using System.Web.Extensions;
+// using System.Web;
 
 //user directives
 using Microsoft.AspNetCore.Authorization;
@@ -28,10 +30,11 @@ namespace RecipeBox.Controllers
 
     public async Task<ActionResult> Index()
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      var userRecipes = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id).ToList();
-      return View(userRecipes);
+      // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      // var currentUser = await _userManager.FindByIdAsync(userId);
+      // var userRecipes = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id).ToList();
+      List<Recipe> model = _db.Recipes.ToList();
+      return View(model);
     }
 
     public ActionResult Create()
@@ -61,6 +64,8 @@ namespace RecipeBox.Controllers
         .Include(recipe => recipe.Tags)
         .ThenInclude(join => join.Tag)
         .FirstOrDefault(recipe => recipe.RecipeId == id);
+      // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      // ViewBag.IsCurrentUser = userId != null ? userId == thisItem.User.Id : false;
       return View(thisRecipe);
     }
 
@@ -93,6 +98,11 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public ActionResult AddTag(Recipe recipe, int TagId)
     {
+      // if (recipe.Contains(TagId))
+      // {
+      //   Response.Write("<script>alert('Recipe already has this tag')</script>");
+      //   return View(recipe);
+      // }
       if (TagId != 0)
       {
         _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId });
@@ -135,14 +145,9 @@ namespace RecipeBox.Controllers
       {
         foreach(Recipe recipe in model)
         {
-          Console.WriteLine("in foreach");
-          Console.WriteLine(search);
-          Console.WriteLine(recipe.RecipeId);
-          Console.WriteLine(recipe.Name + "recipe name please and thank you");
           if (recipe.Ingredients.ToLower().Contains(search))
           {
             matches.Add(recipe);
-            Console.WriteLine(recipe);
           }
         } 
       }
