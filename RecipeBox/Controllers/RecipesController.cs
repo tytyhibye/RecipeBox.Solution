@@ -28,7 +28,7 @@ namespace RecipeBox.Controllers
       _db = db;
     }
 
-    public async Task<ActionResult> Index()
+    public ActionResult Index() //async Task<>
     {
       // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       // var currentUser = await _userManager.FindByIdAsync(userId);

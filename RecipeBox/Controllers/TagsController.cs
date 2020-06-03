@@ -87,14 +87,20 @@ namespace RecipeBox.Controllers
 
       if (!string.IsNullOrEmpty(search))
       {
-       foreach(Tag tag in model)
-       {
-         if (tag.Name.ToLower().Contains(search))
-         {
-           matches.Add(tag);
-         }
-       }
-      }
+        // if (searchParam == "Tag")
+        // {
+          foreach(Tag tag in model)
+          {
+            if (tag.Name.ToLower().Contains(search))
+            {
+              matches.Add(tag);
+            }
+          }
+        }
+        // if (searchParam == "Ingredient")
+        // {
+
+        // }
       return View(matches);
     }
   }

@@ -4,6 +4,11 @@
   <div id="navBar">
   <form action="/search" method="get">
   <br>
+      @* @Html.RadioButton("searchParam", "Tags")
+      <label for="searchParam">Search Tags</label>
+      <br>
+      @Html.RadioButton("searchParam", "Name")
+      <label for="searchParam">Search Recipe Names</label> *@
   <p>Search Recipe By Tag </p>
   <input type = "text" name="search">
   <input type="submit" value="Search" class="btn">
