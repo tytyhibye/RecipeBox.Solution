@@ -19,14 +19,19 @@ else
   @foreach(var join in Model.Tags)
   {
     <p>@join.Tag.Name</p>
-    @using (Html.BeginForm("DeleteTag", "Recipes")) //("Recipes" == "RecipesContoller")
+    @if (User.Identity.IsAuthenticated && ViewBag.IsCurrentUser)
     {
-      <p>@Html.Hidden("joinId", @join.RecipeTagId) <input type="submit" value="Remove Tag" class="btn"/></p>
-      
+      @using (Html.BeginForm("DeleteTag", "Recipes")) //("Recipes" == "RecipesContoller")
+      {
+        <p>@Html.Hidden("joinId", @join.RecipeTagId) <input type="submit" value="Remove Tag" class="btn"/></p>
+      }
     }
   }
 }
 <hr />
-<p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId }) |
-@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId }) |
-@Html.ActionLink("Add Tag", "AddTag", new { id = Model.RecipeId })</p> 
+@if (User.Identity.IsAuthenticated && ViewBag.IsCurrentUser)
+{
+  <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId }) |
+  @Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId }) |
+  @Html.ActionLink("Add Tag", "AddTag", new { id = Model.RecipeId })</p> 
+}

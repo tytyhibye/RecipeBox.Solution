@@ -5,8 +5,6 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-// using System.Web.Extensions;
-// using System.Web;
 
 //user directives
 using Microsoft.AspNetCore.Authorization;
@@ -30,9 +28,6 @@ namespace RecipeBox.Controllers
 
     public ActionResult Index() //async Task<>
     {
-      // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      // var currentUser = await _userManager.FindByIdAsync(userId);
-      // var userRecipes = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id).ToList();
       List<Recipe> model = _db.Recipes.ToList();
       return View(model);
     }
@@ -100,14 +95,13 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public ActionResult AddTag(Recipe recipe, int TagId)
     {
-      // if (recipe.RecipeTag.Contains(TagId))
-      // {
-      //   Response.Write("<script>alert('Recipe already has this tag')</script>");
-      //   return View(recipe);
-      // }
-      if (TagId != 0)
+     
+      // var thisTagId = _db.RecipeTag.FirstOrDefault(recipeTag => recipeTag.TagId == TagId);
+      // Console.WriteLine(TagId + " Tags Table Id");
+      // Console.WriteLine(thisTagId.TagId + " RecipeTag Table Id");
+      if (TagId != 0 ) //thisTagId.TagId
       {
-        _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId });
+        _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId });      
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
