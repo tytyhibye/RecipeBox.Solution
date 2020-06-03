@@ -111,20 +111,20 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public ActionResult AddTag(Recipe recipe, int TagId)
     {
+      if (TagId != 0 )
+      {
+        _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId }); 
+      }
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
       // var thisTagId = _db.RecipeTag.FirstOrDefault(recipeTag => recipeTag.TagId == TagId);
       // Console.WriteLine(TagId + " Tags Table Id");
       // Console.WriteLine(thisTagId + "ThisTagId");
-      if (thisTagId != 0 ) //null
-      {
       //   Console.WriteLine("That's a duplicate!");
       //   return View();
       // }
       // else{
-      _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId }); 
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-      }
-    }
 
     /*  
     Entity Framework Attempt to find duplicates  
@@ -149,7 +149,6 @@ namespace RecipeBox.Controllers
       return View(thisItem);
     }
     */  
-
     public ActionResult Delete(int id)
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
