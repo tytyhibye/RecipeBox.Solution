@@ -3,11 +3,12 @@
 }
 
 @model RecipeBox.Models.Tag
-
-<h4>Add a new Tag</h4>
+<hr />
+<h3>Add a new Tag</h3>
+<hr />
 @using (Html.BeginForm())
 {
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)
-    <input type="submit" value="Add new tag" class="btn"/>
+    <input type="submit" value="Create tag" class="btn"/>
 }

@@ -26,13 +26,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px double green;
+  border: 5px double green;
 }
 .splash:hover {
   animation: shadow-pulse 1s infinite;
-}
-.splash:active {
-
 }
 
 footer{

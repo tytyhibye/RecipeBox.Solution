@@ -21,7 +21,7 @@ else
     <p>@join.Tag.Name</p>
     @using (Html.BeginForm("DeleteTag", "Recipes")) //("Recipes" == "RecipesContoller")
     {
-      <p>@Html.Hidden("joinId", @join.RecipeTagId) | <input type="submit" value="Delete Tag" class="btn"/></p>
+      <p>@Html.Hidden("joinId", @join.RecipeTagId) <input type="submit" value="Remove Tag" class="btn"/></p>
       
     }
   }

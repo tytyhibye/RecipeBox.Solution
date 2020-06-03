@@ -4,19 +4,21 @@
 
 @using RecipeBox.Models;
 @model List<RecipeBox.Models.Tag>;
+<hr />
+<h2>Current List of Tags</h2>
+<hr />
 
-<h2>Tags</h2>
+@foreach(Tag tag in Model)
+{
+  <p>@Html.ActionLink($"{tag.Name}", "Details", new { id = tag.TagId })</p>
+}
 
-<ul>
-  @foreach(Tag tag in Model)
-  {
-    <p>@Html.ActionLink($"{tag.Name}", "Details", new { id = tag.TagId })</p>
-  }
-</ul>
 
 @if (@Model.Count == 0)
 {
   <h3>No tags have been added yet!</h3>
 } 
 <br>
-<p>@Html.ActionLink("Add new Tag", "Create")</p>
+<form action="/Tags/Create" method="get">
+  <input type="submit" value="Add new Tag" class="btn">
+</form>

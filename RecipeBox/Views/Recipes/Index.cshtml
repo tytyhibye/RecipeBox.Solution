@@ -4,8 +4,8 @@
 
 @using RecipeBox.Models
 @model IEnumerable<RecipeBox.Models.Recipe>
-
-<h2>Recipes for @User.Identity.Name</h2>
+<hr />
+<h3>Recipes for @User.Identity.Name</h3>
 <hr />
 @if (Model.Any())
 {
