@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\RecipeBox\\RecipeBox.csproj": {}
+    "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\recipebox\\RecipeBox.csproj": {}
   },
   "projects": {
-    "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\RecipeBox\\RecipeBox.csproj": {
+    "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\recipebox\\RecipeBox.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\RecipeBox\\RecipeBox.csproj",
+        "projectUniqueName": "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\recipebox\\RecipeBox.csproj",
         "projectName": "RecipeBox",
-        "projectPath": "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\RecipeBox\\RecipeBox.csproj",
+        "projectPath": "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\recipebox\\RecipeBox.csproj",
         "packagesPath": "C:\\Users\\conno_000\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\RecipeBox\\obj\\",
+        "outputPath": "C:\\Users\\conno_000\\Desktop\\C#\\RecipeBox.Solution\\recipebox\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

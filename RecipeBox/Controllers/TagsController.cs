@@ -71,5 +71,25 @@ namespace RecipeBox.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpGet("/search")]
+    public ActionResult Search(string search)
+    {
+      List<Tag> model = _db.Tags.Include(Tags => Tags.Recipes).ToList();
+      Tag match = new Tag();
+      List<Tag> matches = new List<Tag>{};
+
+      if (!string.IsNullOrEmpty(search))
+      {
+       foreach(Tag tag in model)
+       {
+         if (tag.Name.ToLower().Contains(search))
+         {
+           matches.Add(tag);
+         }
+       } 
+      }
+      return View(matches);
+    }
   }
 }
