@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using RecipeBox.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -92,20 +93,63 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    // bool checkDuplicateTag(DataTable table, int TagId)
+    // {
+    //   Recipe recipe = new Recipe();
+    //   foreach (DataRow row in table.Rows)
+    //   {
+    //     if(row[2].Equals(recipe.RecipeId) && row[3].Equals(TagId))
+    //     return true;
+    //   }
+    //   return false;
+    // }
+    //
+    // if(!checkDuplicateTag(recipeId, TagId))
+    //     { execute function }
+
+
     [HttpPost]
     public ActionResult AddTag(Recipe recipe, int TagId)
     {
-     
       // var thisTagId = _db.RecipeTag.FirstOrDefault(recipeTag => recipeTag.TagId == TagId);
       // Console.WriteLine(TagId + " Tags Table Id");
-      // Console.WriteLine(thisTagId.TagId + " RecipeTag Table Id");
-      if (TagId != 0 ) //thisTagId.TagId
+      // Console.WriteLine(thisTagId + "ThisTagId");
+      if (thisTagId != 0 ) //null
       {
-        _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId });      
-      }
+      //   Console.WriteLine("That's a duplicate!");
+      //   return View();
+      // }
+      // else{
+      _db.RecipeTag.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId }); 
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
+
+    /*  
+    Entity Framework Attempt to find duplicates  
+    --------------------------------------------     
+    if (db.Orderss.Any(o => o.Transaction == txnId)) return;
+    if (RecipeTag.Any(o => o.TagId = TagId))
+
+    This returns the first time the recipeId is met
+    --------------------------------------------------
+    var thisRecipeTag = _db.RecipeTag.FirstOrDefault(recipeTag => recipeTag.RecipeId == recipe.RecipeId);          
+    
+    ToDoList Lesson
+    ---------------------------------------------------
+    public async Task<ActionResult> AddCategory(int id)
+    {
+      Item thisItem = _db.Items.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(items => items.ItemId == id);
+      if (thisItem == null)
+      {
+        return RedirectToAction("Details", new {id = id});
+      }
+      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
+      return View(thisItem);
+    }
+    */  
+
     public ActionResult Delete(int id)
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);

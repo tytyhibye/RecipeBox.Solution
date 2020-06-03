@@ -4,7 +4,7 @@
 
 ## _Description_
 
-RecipeBox is an application allowing the user to login then add, edit, organize and store their favorite recipes.
+RecipeBox is an application allowing the user to add, edit, organize and store their favorite recipes upon registration and login. All registered users have access to all recipe details but only the author of a recipe can alter it's information. The user can search for a recipe by associated tags and also by ingredient used in a recipe.
 
 
 ## _Setup/Installation Requirements_ 
