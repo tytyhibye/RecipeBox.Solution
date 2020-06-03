@@ -37,6 +37,7 @@ namespace RecipeBox.Controllers
       return View(model);
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Name");
@@ -63,9 +64,10 @@ namespace RecipeBox.Controllers
       var thisRecipe = _db.Recipes
         .Include(recipe => recipe.Tags)
         .ThenInclude(join => join.Tag)
+        .Include(recipe => recipe.User)
         .FirstOrDefault(recipe => recipe.RecipeId == id);
-      // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      // ViewBag.IsCurrentUser = userId != null ? userId == thisItem.User.Id : false;
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ViewBag.IsCurrentUser = userId != null ? userId == thisRecipe.User.Id : false;
       return View(thisRecipe);
     }
 
@@ -98,7 +100,7 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public ActionResult AddTag(Recipe recipe, int TagId)
     {
-      // if (recipe.Contains(TagId))
+      // if (recipe.RecipeTag.Contains(TagId))
       // {
       //   Response.Write("<script>alert('Recipe already has this tag')</script>");
       //   return View(recipe);

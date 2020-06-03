@@ -25,7 +25,8 @@ namespace RecipeBox.Controllers
       List<Tag> model = _db.Tags.ToList();
       return View(model);
     }
-
+    
+    [Authorize]
     public ActionResult Create()
     {
       return View();
