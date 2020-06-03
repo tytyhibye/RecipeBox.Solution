@@ -7,6 +7,12 @@
 <hr />
 <h3>Recipes for @User.Identity.Name</h3>
 <hr />
+<form action="/IngredientSearch" method="get">
+  <br>
+  <p>Search Recipe By Ingredient </p>
+  <input type = "text" name="search">
+  <input type="submit" value="search" class="btn">
+</form>
 @if (Model.Any())
 {
   @foreach(Recipe recipe in Model)

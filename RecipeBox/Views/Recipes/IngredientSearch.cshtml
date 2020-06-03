@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+
+@using RecipeBox.Models;
+
+<h3>Search Results:</h3>
+<hr />
+
+@foreach(Recipe recipe in Model)
+{
+  <h4>@Html.ActionLink($"{recipe.Name}", "Details", "Recipes", new {id = recipe.RecipeId})</h4>
+}

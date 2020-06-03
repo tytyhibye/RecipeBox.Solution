@@ -38,3 +38,4 @@ C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcore
 C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\Razor\Views\Tags\Edit.g.cshtml.cs
 C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\Razor\Views\Tags\Index.g.cshtml.cs
 C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\Razor\Views\Tags\Search.g.cshtml.cs
+C:\Users\conno_000\Desktop\C#\RecipeBox.Solution\RecipeBox\obj\HPD\Debug\netcoreapp2.2\Razor\Views\Recipes\IngredientSearch.g.cshtml.cs

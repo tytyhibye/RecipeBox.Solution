@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 //user directives
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +14,7 @@ using System.Security.Claims;
 
 namespace RecipeBox.Controllers
 {
-  [Authorize]
+  
   public class RecipesController : Controller
   {
     private readonly RecipeBoxContext _db;
@@ -53,8 +54,8 @@ namespace RecipeBox.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-     public ActionResult Details(int id)
+    [Authorize]
+    public ActionResult Details(int id)
     {
       var thisRecipe = _db.Recipes
         .Include(recipe => recipe.Tags)
@@ -121,6 +122,31 @@ namespace RecipeBox.Controllers
       _db.RecipeTag.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    [HttpGet("/IngredientSearch")]
+    public ActionResult IngredientSearch(string search)
+    {
+      List<Recipe> model = _db.Recipes.ToList();
+      Recipe match = new Recipe();
+      List<Recipe> matches = new List<Recipe>{};
+
+      if (!string.IsNullOrEmpty(search))
+      {
+        foreach(Recipe recipe in model)
+        {
+          Console.WriteLine("in foreach");
+          Console.WriteLine(search);
+          Console.WriteLine(recipe.RecipeId);
+          Console.WriteLine(recipe.Name + "recipe name please and thank you");
+          if (recipe.Ingredients.ToLower().Contains(search))
+          {
+            matches.Add(recipe);
+            Console.WriteLine(recipe);
+          }
+        } 
+      }
+      return View(matches);
     }
   }
 }
